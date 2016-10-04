@@ -4,8 +4,8 @@
    <!--
       LIS 2360:  Web Application Development
       Lesson 4 Assignment
-      Author:  
-      Date:   
+      Author: Vanessa Navarro  
+      Date:   0/28/16
       Filename: expenseViewer.html
    -->
    <meta charset="utf-8" />
@@ -29,7 +29,7 @@
         <fieldset id="inputinfo">
           <legend><span>Instructions:</span></legend>
           <p>The expense calculator will determine your total living expenses and 
-          show the percentage of the total expenses spent for each category (food, shelter, etc.).</p>
+          show the percentage of the total expenses spent for each category (food, shelter, transportation etc.).</p>
           
           <br>
           
@@ -49,8 +49,7 @@
             Food (grocery, dining out, etc.):
               <input type="text" id="foodInput" name="food" />
               </label>
-          </p>
-          
+         
           <!--************************************************************************************************
           * Task #1:  Add additional expense categories using the above code as an example.  The 
           *           following categories should be included:  Household, Transportation, and 
@@ -62,12 +61,29 @@
           *           later in the program and it must match EXACTLY including the case.
 	      *	
           * HINT:  Use the following variable names:  householdInput, miscellaneousInput, transportationInput
+          Vanessa Navarro
           *
           *************************************************************************************************-->
+</p>
+         </p>
+          <p><label for="householdInput">
+            Household (electric, cleaning supplies, furnishing etc.):
+              <input type="text" id="householdInput" name="household" />
+              </label>
+         
+          </p>
+           <p><label for="miscellaneousInput">
+            Miscellaneous (decorations, clothes, pet expenses etc.):
+              <input type="text" id="miscellaneousInput" name="miscellaneous" />
+              </label>
+          </p>
+             <p><label for="transportationInput">
+           Transportation (gas, car insurance, registration, etc.):
+              <input type="text" id="transportationInput" name="transportation" />
+              </label>
+          </p>
 
 
-
-        
         </fieldset>                 
 
 
@@ -86,8 +102,8 @@
                  <p id="shelterPercentage">  </p>
                  <p id="foodPercentage">  </p>
                  <p id="householdPercentage">  </p>
-                 <p id="transportationPercentage">  </p>
                  <p id="miscellaneousPercentage">  </p>
+                 <p id="transportationPercentage">  </p>
              </label>              
           </fieldset>
         </fieldset>
@@ -142,7 +158,9 @@
               
               var shelterAmt = document.getElementById("shelterInput").value;
               var foodAmt = document.getElementById("foodInput").value;
-
+               var householdAmt = document.getElementById("householdInput").value;
+                 var miscellaneousAmt = document.getElementById("miscellaneousInput").value;
+                  var transportationAmt = document.getElementById("transportationInput").value;
               
               
 
@@ -164,6 +182,9 @@
 
               shelterAmt = parseFloat(shelterAmt);
               foodAmt = parseFloat(foodAmt);
+                householdAmt = parseFloat(householdAmt);
+                  miscellaneousAmt = parseFloat(miscellaneousAmt);
+                   transportationAmt = parseFloat(transportationAmt);
 
 
 
@@ -185,6 +206,12 @@
               var totalExpenses; //total expenses for the user
               var shelterPct; //shelter category percentage
               var foodPct;  //food category percentage
+               var householdPct;  //household category percentage
+                var miscellaneousPct;  //Miscellaneous category percentage
+                 var transportationPct;  //transportation category percentage
+
+
+
 
 
 
@@ -212,11 +239,12 @@
                *          variables declared in Task 4.  
               *******************************************************************************************************/   
          
-
+totalExpenses = shelterAmt + foodAmt + householdAmt + transportationAmt + miscellaneousAmt;
               shelterPct = 100 * (shelterAmt / totalExpenses);
               foodPct = 100 * (foodAmt / totalExpenses);
-
-
+             householdPct = 100 * (householdAmt / totalExpenses);
+            miscellaneousPct = 100 * (miscellaneousAmt / totalExpenses);
+            transportationPct = 100 * (transportationAmt / totalExpenses);
               /******************************************************************************************************
                * Task 6:  Add the additional code needed to display the total expenses and the percentages for each 
                *          category.  You must add the code to display the NEW categories you've added (Household, 
@@ -241,9 +269,12 @@
               document.getElementById("totalExpenses").innerHTML = "<b>Total Expenses:     $</b> " + totalExpenses.toFixed(2);
               document.getElementById("shelterPercentage").innerHTML = "% for <b>shelter</b>:      " + shelterPct.toFixed(1);      
               document.getElementById("foodPercentage").innerHTML = "% for <b>food:</b>      " + foodPct.toFixed(1);
-
-         
-         
+ document.getElementById("foodPercentage").innerHTML = "% for <b>food:</b>      " + foodPct.toFixed(1);
+  document.getElementById("householdPercentage").innerHTML = "% for <b>household:</b>      " + householdPct.toFixed(1);
+  document.getElementById("miscellaneousPercentage").innerHTML = "% for <b>miscellaneous:</b>      " + miscellaneousPct.toFixed(1);
+        document.getElementById("miscellaneousPercentage").innerHTML = "% for <b>miscellaneous:</b>      " + miscellaneousPct.toFixed(1);
+           document.getElementById("transportationPercentage").innerHTML = "% for <b>transportation:</b>      " + transportationPct.toFixed(1);
+        
          
          } //end of calculatePercentages function
          
@@ -276,7 +307,10 @@
               document.getElementById("totalExpenses").innerHTML = ""; 
               document.getElementById("shelterPercentage").innerHTML = "";      
               document.getElementById("foodPercentage").innerHTML  = "";
-
+document.getElementById("miscellaneousPercentage").innerHTML = "";
+document.getElementById("transportationPercentage").innerHTML = "";
+document.getElementById
+("householdPercentage").innerHTML = "";
 
               
          }//end of clearForm function
